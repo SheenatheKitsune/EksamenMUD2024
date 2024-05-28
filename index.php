@@ -22,9 +22,9 @@ require "settings/init.php";
 <div class="container-fluid">
     <div class="row vh-100">
         <div class="vh-100 position-relative bg-success" id="opslagstavle">
-            <div class="row row-cols-2 fs-3 text-light border-bottom py-2">
-                <div>Hotel Strandparken</div>
-                <div class="text-end" id="time">00:00</div>
+            <div class="row row-cols-2 fs-3 text-light border-dark border-bottom py-2">
+                <div class="fs-2 fw-bold">Hotel Strandparken</div>
+                <div class="text-end fs-2 fw-medium" id="time">00:00</div>
             </div>
 
             <div class="text-light text-center py-3 mt-3">
@@ -33,16 +33,15 @@ require "settings/init.php";
                 <div class="fs-3">25</div>
             </div>
 
-            <div class="d-flex align-items-center justify-content-center" id="logo">
-                <img src="../EksamenMUD2024/Pictures/LogoBlackBackground.png" class="img-fluid w-75" alt="Hotel Strandparken's logo">
+            <div class="d-flex my-5 align-items-center justify-content-center" id="logo">
+                <img src="../EksamenMUD2024/Pictures/LogoBlackBackground.png" class="img-fluid w-75 d-none" alt="Hotel Strandparken's logo">
                 <img src="../EksamenMUD2024/Pictures/LogoWhiteBackground.png" class="img-fluid w-75" alt="Hotel Strandparken's logo">
             </div>
 
             <div class="text-light text-center py-3 fs-1" id="status">
-                <div>Forstyr ikke</div>
-                <div>Forstyr ikke</div>
+                <div class="d-none">Forstyr ikke</div>
+                <div class="d-none">Forstyr ikke</div>
             </div>
-
 
             <!--
                 <div class="w-50 mx-auto text-light py-3" id="cleaningStatus">
@@ -124,11 +123,11 @@ require "settings/init.php";
                                 </div>
                             </div>
                         </div>
-                        <?php
-                        }
-                        ?>
                     </div>
                 </div>
+                    <?php
+                }
+                ?>
             </div>
         </div>
     </div>
@@ -167,8 +166,8 @@ require "settings/init.php";
             status.children[0].classList.add('d-none');
             status.children[1].classList.add('d-block');
 
-            logo.children[0].classList.add('d-none');
-            logo.children[1].classList.add('d-block');
+            logo.children[0].classList.add('d-block');
+            logo.children[1].classList.add('d-none');
 
         } else {
             opslagstavle.classList.add('bg-success');
@@ -177,8 +176,8 @@ require "settings/init.php";
             status.children[0].classList.add('d-none');
             status.children[1].classList.add('d-none');
 
-            logo.children[0].classList.add('d-block');
-            logo.children[1].classList.add('d-none');
+            logo.children[0].classList.add('d-none');
+            logo.children[1].classList.add('d-block');
         }
 
     }

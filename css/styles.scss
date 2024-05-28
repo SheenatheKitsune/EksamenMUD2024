@@ -10,9 +10,15 @@ $link-decoration: none;
 
 // 4. Include any default map overrides here
 $custom-colors: (
-	"farve": $cyan-400,
+
+	"success": #d4dee8,
+	"danger": #ed9fa4
 );
 
 $theme-colors: map-merge($theme-colors, $custom-colors);
 
 @import "bootstrapComponents";
+
+div{
+	Color: #1a1d20;
+}
