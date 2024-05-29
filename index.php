@@ -38,16 +38,16 @@ require "settings/init.php";
                 <img src="../EksamenMUD2024/Pictures/LogoWhiteBackground.png" class="img-fluid w-75" alt="Hotel Strandparken's logo">
             </div>
 
-            <div class="text-light text-center py-3 fs-1" id="status">
+            <div class="text-light text-center fs-1" id="status">
                 <div class="d-none">Forstyr ikke</div>
                 <div class="d-none">Forstyr ikke</div>
             </div>
 
-            <!--
-                <div class="w-50 mx-auto text-light py-3" id="cleaningStatus">
+            <!-- Kode vi gerne vil inddrage, hvis de kan lade sig gøre...
+                <div class="w-50 mx-auto text-light py-3 d-none" id=cleaningStatus">
                     <div class="text-center mb-2">Rengøres af:</div>
                     <div class="card text-light">
-                        <div class="row g-0 justify-content-center">
+                        <div class="row g-0 justify-content-center" >
                             <div class="col-auto d-flex align-items-center ps-1">
                                 <img src="" class="profile-img rounded-circle border border-2 border-light" alt="profilbillede">
                             </div>
@@ -82,17 +82,14 @@ require "settings/init.php";
 </div>
 
 <div class="modal" id="howToVideo" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Sådan gør du</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title fs-2">Hjælp til hvordan du bruger skærmen</h5>
+                <button type="button" class="btn-close fs-2" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <video src="../EksamenMUD2024/Videos/HowToVideo.mp4" class="img-fluid"></video>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <video src="../EksamenMUD2024/Videos/HowToVideo.mp4" controls style="height:auto" class="img-fluid"></video>
             </div>
         </div>
     </div>
@@ -117,9 +114,19 @@ require "settings/init.php";
                             </div>
                             <div class="col-auto">
                                 <div class="card-body">
-                                    <div class="card-text"><small class="text-body-secondary">Navn</small></div>
+                                    <div class="card-text"><small class="text-body-secondary fw-bold"><?php echo $pictures->ProdNavn;?></small></div>
                                     <div class="card-text">Rengørings assistent</div>
-                                    <div class="card-text fw-bold">00:00 - 00:00</div>
+                                    <div class="row row-cols-3 mt-3 justify-content-around" id="cleaningTime">
+                                        <div id="cleaningTime1">
+                                        <button type="button" class="ps-3 border-1 bg-success rounded-4"><?php echo $pictures->ProdTidspunkt1;?></button>
+                                        </div>
+                                        <div>
+                                            <button type="button" class="border-1 bg-success rounded-4"><?php echo $pictures->ProdTidspunkt2;?></button>
+                                        </div>
+                                        <div>
+                                            <button type="button" class="border-1 bg-success rounded-4"><?php echo $pictures->ProdTidspunkt3;?></button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -143,14 +150,18 @@ require "settings/init.php";
     const bellMuted = document.querySelector('#bellMuted');
     const time = document.querySelector('#time');
     const timeRoomserive = document.querySelector('#timeRoomservice');
+    const cleaningTime1 = document.querySelector('#cleaningTime1');
+
 
     bellRinging.addEventListener('click', () => {
         toggleStatus(false);
     })
 
+
     bellMuted.addEventListener('click', () => {
         toggleStatus(true);
     })
+
 
     function toggleStatus(isBellMuted){
 
@@ -160,27 +171,56 @@ require "settings/init.php";
         logo.children[1].classList.remove('d-none');
 
         if(isBellMuted){
-            opslagstavle.classList.remove('bg-succes');
+            opslagstavle.classList.remove('bg-success');
             opslagstavle.classList.add('bg-danger');
 
-            status.children[0].classList.add('d-none');
-            status.children[1].classList.add('d-block');
+
+            status.children[0].classList.add('d-block');
+            status.children[1].classList.add('d-none');
+
 
             logo.children[0].classList.add('d-block');
             logo.children[1].classList.add('d-none');
+
 
         } else {
             opslagstavle.classList.add('bg-success');
             opslagstavle.classList.remove('bg-danger');
 
+
             status.children[0].classList.add('d-none');
             status.children[1].classList.add('d-none');
+
 
             logo.children[0].classList.add('d-none');
             logo.children[1].classList.add('d-block');
         }
 
     }
+
+    cleaningTime1.addEventListener('click', () => {
+        toggleKnap(true);
+    })
+
+    cleaningTime1.addEventListener('click', () => {
+        toggleKnap(true);
+    })
+
+    function toggleKnap(isCleaningButtonPressed){
+
+        if(isCleaningButtonPressed){
+            cleaningTime1.children[0].classList.add('bg-danger');
+            cleaningTime1.children[0].classList.remove('bg-success');
+
+        } else {
+            cleaningTime1.children[0].classList.remove('bg-danger');
+            cleaningTime1.children[0].classList.add('bg-success');
+        }
+
+    }
+
+
+
 
     function showTime(){
         const date = new Date();
@@ -189,10 +229,13 @@ require "settings/init.php";
         const clock = hours + ':' + minutes;
         time.innerHTML = clock;
 
+
         setTimeout(showTime, 1000);
     }
 
+
     showTime();
+
 
     function showTimeRoomservice(){
         const date = new Date();
@@ -201,8 +244,10 @@ require "settings/init.php";
         const clock = hours + ':' + minutes;
         timeRoomserive.innerHTML = clock;
 
+
         setTimeout(showTimeRoomservice, 1000);
     }
+
 
     showTimeRoomservice();
 
