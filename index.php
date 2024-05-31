@@ -118,13 +118,13 @@ require "settings/init.php";
                                     <div class="card-text">Rengørings assistent</div>
                                     <div class="row row-cols-3 mt-3 justify-content-around" id="cleaningTime">
                                         <div id="cleaningTime1">
-                                        <button type="button" class="ps-3 border-1 bg-success rounded-4"><?php echo $pictures->ProdTidspunkt1;?></button>
+                                        <button type="button" class="ps-3 border-1 btn-success rounded-4"><?php echo $pictures->ProdTidspunkt1;?></button>
                                         </div>
-                                        <div>
-                                            <button type="button" class="border-1 bg-success rounded-4"><?php echo $pictures->ProdTidspunkt2;?></button>
+                                        <div id="cleaningTime2">
+                                            <button type="button" class="border-1 btn-success rounded-4"><?php echo $pictures->ProdTidspunkt2;?></button>
                                         </div>
-                                        <div>
-                                            <button type="button" class="border-1 bg-success rounded-4"><?php echo $pictures->ProdTidspunkt3;?></button>
+                                        <div id="cleaningTime3">
+                                            <button type="button" class="border-1 btn-success rounded-4"><?php echo $pictures->ProdTidspunkt3;?></button>
                                         </div>
                                     </div>
                                 </div>
@@ -151,6 +151,8 @@ require "settings/init.php";
     const time = document.querySelector('#time');
     const timeRoomserive = document.querySelector('#timeRoomservice');
     const cleaningTime1 = document.querySelector('#cleaningTime1');
+    const cleaningTime2 = document.querySelector('#cleaningTime2');
+    const cleaningTime3 = document.querySelector('#cleaningTime3');
 
 
     bellRinging.addEventListener('click', () => {
@@ -199,7 +201,7 @@ require "settings/init.php";
     }
 
     cleaningTime1.addEventListener('click', () => {
-        toggleKnap(true);
+        toggleKnap(false);
     })
 
     cleaningTime1.addEventListener('click', () => {
@@ -215,6 +217,48 @@ require "settings/init.php";
         } else {
             cleaningTime1.children[0].classList.remove('bg-danger');
             cleaningTime1.children[0].classList.add('bg-success');
+        }
+
+    }
+
+    cleaningTime2.addEventListener('click', () => {
+        toggleKnap1(false);
+    })
+
+    cleaningTime2.addEventListener('click', () => {
+        toggleKnap1(true);
+    })
+
+    function toggleKnap1(isCleaningButtonPressed){
+
+        if(isCleaningButtonPressed){
+            cleaningTime2.children[0].classList.add('bg-danger');
+            cleaningTime2.children[0].classList.remove('bg-success');
+
+        } else {
+            cleaningTime2.children[0].classList.remove('bg-danger');
+            cleaningTime2.children[0].classList.add('bg-success');
+        }
+
+    }
+
+    cleaningTime3.addEventListener('click', () => {
+        toggleKnap2(false);
+    })
+
+    cleaningTime3.addEventListener('click', () => {
+        toggleKnap2(true);
+    })
+
+    function toggleKnap2(isCleaningButtonPressed){
+
+        if(isCleaningButtonPressed){
+            cleaningTime3.children[0].classList.add('bg-danger');
+            cleaningTime3.children[0].classList.remove('bg-success');
+
+        } else {
+            cleaningTime3.children[0].classList.remove('bg-danger');
+            cleaningTime3.children[0].classList.add('bg-success');
         }
 
     }
