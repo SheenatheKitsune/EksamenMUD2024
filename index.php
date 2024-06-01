@@ -43,26 +43,6 @@ require "settings/init.php";
                 <div class="d-none">Forstyr ikke</div>
             </div>
 
-            <!-- Kode vi gerne vil inddrage, hvis de kan lade sig gøre...
-                <div class="w-50 mx-auto text-light py-3 d-none" id=cleaningStatus">
-                    <div class="text-center mb-2">Rengøres af:</div>
-                    <div class="card text-light">
-                        <div class="row g-0 justify-content-center" >
-                            <div class="col-auto d-flex align-items-center ps-1">
-                                <img src="" class="profile-img rounded-circle border border-2 border-light" alt="profilbillede">
-                            </div>
-                            <div class="col-auto">
-                                <div class="card-body">
-                                    <div class="card-text"><small>Navn</small></div>
-                                    <div class="card-text">Rengørings assitent</div>
-                                    <div class="card-text fw-bold">00:00 - 00:00</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            -->
-
             <div class="row row-cols-5 position-fixed bottom-0 start-50 translate-middle mb-3">
                 <div class="align-content-center p-3 ps-5">
                     <button type="button" class="btn btn-light rounded-circle" data-bs-toggle="modal" data-bs-target="#howToVideo"><i class="fa-solid fa-question" style="color: #808080;"></i></button>
