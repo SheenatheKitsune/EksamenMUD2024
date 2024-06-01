@@ -13,10 +13,10 @@ if(CONFIG_LIVE == 0){
     $DB_USER = "root";
     $DB_PASS = "";
 }else{
-    $DB_SERVER = "mysql15.unoeuro.com";
-    $DB_NAME = "kitsunee_dk_db";
-    $DB_USER = "kitsunee_dk";
-    $DB_PASS = "Fmzk3E2phRxt5geaGfBr";
+    $DB_SERVER = "";
+    $DB_NAME = "";
+    $DB_USER = "";
+    $DB_PASS = "";
 }
 
 $db = new db($DB_SERVER, $DB_NAME, $DB_USER, $DB_PASS);
